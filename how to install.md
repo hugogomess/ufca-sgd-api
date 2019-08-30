@@ -2,50 +2,50 @@
 
 Sistema de Gestão de Demandas da UFCA. 
 
-## Dependencies
+## Dependencias
 
-First of all, you need to have installed [Python 3.7.3](https://www.python.org/downloads/) and [Pip](https://pip.pypa.io/en/stable/installing/) on your machine.
+Primeiramente, você precisa ter o [Python 3.7.3](https://www.python.org/downloads/) instalado no seu computador.
 
-To check the dependencies, use the commands `$ python --version` and `$ pip --version`.
+Para checkar as dependências use `$ python --version` e `$ pip --version`.
 
-## Installation
+## Instalação
 
-1. First clone this repository:
+1. Clone esse repositório:
 
   ```
   $ git clone git@github.com:hugogomess/ufca-sgd-api.git
   ```
 
-2. Go to the project directory:
+2. Vá até o diretório do projeto:
 
   ```
   $ cd ufca-sgd-api
   ```
 
-3. Solve the dependencys:
+3. Instale as dependências do projeto:
 
   ```
   $ pip install -r requirements-dev.txt
   ```
 
-4. Create migrate
+4. Crie a migração do banco de dados migrate
 
   ```
   $ python manage.py migrate
   ```
 
-5. Create a super user
+5. Crie um super usuário (todas as permissões)
 
   ```
   $ python manage.py createsuperuser
   ```
 
-## Use
+## Servidor de Desenvolvimento
 
-1. Inside the project root folder, run:
+1. Dentro da pasta do projeto, rode o comando:
 
   ```
   $ python manage.py runserver
   ```
 
-2. In your browser, open [http://localhost:8000](http://localhost:8000).
+2. No seu navegador vá até [http://localhost:8000](http://localhost:8000).
