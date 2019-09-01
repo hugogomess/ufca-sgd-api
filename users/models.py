@@ -8,10 +8,10 @@ class User(AbstractUser):
     email = models.EmailField(blank=False, null=False, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    deleted_at = models.DateTimeField(null=True, blank=True)
 
     class Meta:
         ordering = ['-created_at']
 
     def __str__(self):
         return self.username
-
