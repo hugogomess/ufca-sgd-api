@@ -5,9 +5,10 @@ from rest_framework.response import Response
 from django.utils import timezone
 from rest_framework import status
 from rest_framework.decorators import action
+from rest_framework.settings import api_settings
 
 from .models import User
-from .serializers import UserSerializer
+from .serializers import UserSerializer, UserSerializerCreate
 from .filters import UserFilter
 
 class UserViewSet(ModelViewSet):
@@ -17,6 +18,24 @@ class UserViewSet(ModelViewSet):
     permission_classes = (IsAuthenticated,)
     authentication_classes = (TokenAuthentication,)
     filterset_class = UserFilter
+
+    # Override create method
+    def create(self, request, *args, **kwargs):
+
+        self.serializer_class = UserSerializerCreate
+
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+
+        try:
+            headers =  {'Location': str(serializer.data[api_settings.URL_FIELD_NAME])}
+        except (TypeError, KeyError):
+            headers = {}
+
+        self.serializer_class = UserSerializer
+
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
     # Override defalt destroy to soft delete
     def destroy(self, request, *args, **kwargs):
