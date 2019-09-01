@@ -16,25 +16,38 @@ Para checkar as dependências use `$ python --version` e `$ pip --version`.
   git clone git@github.com:hugogomess/ufca-sgd-api.git
   ```
 
-1. Vá até o diretório do projeto:
+2. Vá até o diretório do projeto:
 
   ```
   $ cd ufca-sgd-api
   ```
 
-1. Instale as dependências do projeto:
+3. Crie o arquivo de variáveis de ambiênte:
+  
+  ```
+  $ touch .env
+  ```
+
+4. Edite o arquivo .env adicionando as seguintes variáveis:
+
+  ```
+  SECRET_KEY=YOUR/SECRET/KEY
+  DEBUG=True
+  ```
+
+5. Instale as dependências do projeto:
 
   ```
   $ pip install -r requirements-dev.txt
   ```
 
-1. Crie a migração do banco de dados migrate
+6. Crie a migração do banco de dados migrate
 
   ```
   $ python manage.py migrate
   ```
 
-1. Crie um super usuário (todas as permissões)
+7. Crie um super usuário (todas as permissões)
 
   ```
   $ python manage.py createsuperuser
