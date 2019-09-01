@@ -11,6 +11,8 @@ class UserSerializer(ModelSerializer):
             'first_name',
             'last_name',
             'email',
-            'is_active'
+            'is_active',
+            'password',
+            'last_login'
         )
         
