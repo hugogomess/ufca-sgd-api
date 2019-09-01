@@ -8,6 +8,7 @@ from rest_framework.decorators import action
 
 from .models import User
 from .serializers import UserSerializer
+from .filters import UserFilter
 
 class UserViewSet(ModelViewSet):
 
@@ -15,6 +16,7 @@ class UserViewSet(ModelViewSet):
     serializer_class = UserSerializer
     permission_classes = (IsAuthenticated,)
     authentication_classes = (TokenAuthentication,)
+    filterset_class = UserFilter
 
     # Override defalt destroy to soft delete
     def destroy(self, request, *args, **kwargs):
