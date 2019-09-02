@@ -27,7 +27,7 @@ class UserViewSet(ModelViewSet):
         user.is_active = False
         user.save()
 
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response(status=status.HTTP_200_OK)
 
     @action(detail=True, methods=['get'])
     def activate(self, request, *args, **kwargs):

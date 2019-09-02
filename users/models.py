@@ -11,7 +11,6 @@ class User(AbstractUser):
     deleted_at = models.DateTimeField(null=True, blank=True)
 
     REQUIRED_FIELDS = ['email', 'first_name', 'password']
-
     class Meta:
         ordering = ['-created_at']
 
