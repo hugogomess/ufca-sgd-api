@@ -4,19 +4,27 @@ from django.contrib.auth.password_validation import validate_password
 
 from .models import User
 
+
 class UserSerializer(ModelSerializer):
     class Meta:
         model = User
         fields = ('id',
             'username',
+            'email',
             'first_name',
             'last_name',
-            'email',
+            'password',
             'is_active',
-            'last_login',
-            'password'
+            'is_admin',
+            'is_project_manager',
+            'is_demand_manager',
+            'last_login'
         )
-        extra_kwargs = {'password': {'write_only':True}, 'is_active': {'read_only':True}}
+        extra_kwargs = {
+            'password': {'write_only':True},
+            'is_active': {'read_only':True},
+            'last_login': {'read_only':True}
+        }
 
     def create(self, validated_data):
         password = validated_data.pop('password', None)
@@ -24,6 +32,7 @@ class UserSerializer(ModelSerializer):
         if password is not None:
             validate_password(password)
             instance.set_password(password)
+
         instance.save()
         return instance
 
@@ -36,5 +45,6 @@ class UserSerializer(ModelSerializer):
                 setattr(instance, attr, value)
         instance.save()
         return instance
+
 
         

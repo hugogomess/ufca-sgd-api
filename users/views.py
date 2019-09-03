@@ -10,12 +10,13 @@ from rest_framework.settings import api_settings
 from .models import User
 from .serializers import UserSerializer
 from .filters import UserFilter
+from .permissions import IsAdmin, IsActiveUser
 
 class UserViewSet(ModelViewSet):
 
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated, IsAdmin, IsActiveUser, )
     authentication_classes = (JSONWebTokenAuthentication,)
     filterset_class = UserFilter
 
