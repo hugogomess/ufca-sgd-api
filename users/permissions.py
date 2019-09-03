@@ -24,14 +24,6 @@ class IsDemandManager(BasePermission):
     def has_permission(self, request, view):
         return bool(request.user and request.user.is_demand_manager)
 
-class IsActiveUser(BasePermission):
-    """
-    Allows access only to active users.
-    """
-
-    def has_permission(self, request, view):
-        return bool(request.user and request.user.is_active)
-
 class IsSelfUser(BasePermission):
     """
     Allows access to self users (useful to self user data update).
