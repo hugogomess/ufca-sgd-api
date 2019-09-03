@@ -16,7 +16,7 @@ class UserViewSet(ModelViewSet):
 
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = (IsAuthenticated, IsAdmin, IsActiveUser, )
+    permission_classes = (IsAuthenticated, IsAdmin, IsActiveUser,)
     authentication_classes = (JSONWebTokenAuthentication,)
     filterset_class = UserFilter
 
