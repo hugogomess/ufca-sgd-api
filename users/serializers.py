@@ -26,13 +26,11 @@ class UserSerializer(serializers.ModelSerializer):
             'is_active',
             'is_admin',
             'is_project_manager',
-            'is_demand_manager',
-            'last_login'
+            'is_demand_manager'
         )
         extra_kwargs = {
             'password': {'write_only':True},
-            'is_active': {'read_only':True},
-            'last_login': {'read_only':True}
+            'is_active': {'read_only':True}
         }
 
     def create(self, validated_data):
