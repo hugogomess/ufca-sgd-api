@@ -91,9 +91,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
-    'NON_FIELD_ERRORS_KEY': 'detail',
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 10
+    'NON_FIELD_ERRORS_KEY': 'detail'
 }
 
 # JWT settings
