@@ -24,11 +24,15 @@ class IsDemandManager(BasePermission):
     def has_permission(self, request, view):
         return bool(request.user and request.user.is_demand_manager)
 
-class IsSelfUser(BasePermission):
+class IsAdminOrIsSelfUser(BasePermission):
     """
-    Allows access to self users (useful to self user data update).
+    Allows access to self users or admin(useful to self user data update).
     """
 
     def has_permission(self, request, view):
-        # request.data['data'] ???
-        return bool(request.user and request.user.id == request.data['id'])
+        detail = int(request.parser_context['kwargs']['pk'])
+
+        return (
+            (request.user and request.user.id == detail) or
+            (request.user and request.user.is_admin)
+        )

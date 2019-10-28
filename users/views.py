@@ -10,7 +10,7 @@ from rest_framework.settings import api_settings
 from .models import User
 from .serializers import UserSerializer
 from .filters import UserFilter
-from .permissions import IsAdmin
+from .permissions import IsAdmin, IsAdminOrIsSelfUser
 
 class UserViewSet(ModelViewSet):
 
@@ -19,6 +19,11 @@ class UserViewSet(ModelViewSet):
     permission_classes = (IsAuthenticated, IsAdmin,)
     authentication_classes = (JSONWebTokenAuthentication,)
     filterset_class = UserFilter
+
+    def get_permissions(self):
+        if self.action == 'retrieve' or self.action == 'partial_update':
+            return [IsAuthenticated(), IsAdminOrIsSelfUser()]        
+        return super(UserViewSet, self).get_permissions()
 
     # Override defalt destroy to soft delete
     def destroy(self, request, *args, **kwargs):

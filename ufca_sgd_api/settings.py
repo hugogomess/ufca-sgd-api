@@ -82,8 +82,8 @@ TEMPLATES = [
 ]
 
 REST_FRAMEWORK = {
-     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
-     'DEFAULT_RENDERER_CLASSES': (
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+    'DEFAULT_RENDERER_CLASSES': (
         'rest_framework.renderers.JSONRenderer',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -91,7 +91,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ),
-    'NON_FIELD_ERRORS_KEY': 'detail',
+    'NON_FIELD_ERRORS_KEY': 'detail'
 }
 
 # JWT settings
