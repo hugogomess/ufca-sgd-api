@@ -1,3 +1,20 @@
 from django.db import models
 
-# Create your models here.
+class Demand(models.Model):
+    # Dict que define os possíveis status da demanda
+    STATUS = (
+        ('ABERTA', 'ABERTA'),
+        ('EM ANDAMENTO', 'EM ANDAMENTO'),
+        ('FECHADA', 'FECHADA'),
+    )
+
+    name = models.CharField(blank=False, null=False, max_length=100)
+    description = models.TextField(blank=False, null=False)
+    requester = models.CharField(blank=False, null=False, max_length=70)
+    origin = models.TextField(blank=False, null=False)
+    status = models.CharField(choices=STATUS, null=False, max_length=20, default='ABERTA')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
