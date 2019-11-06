@@ -4,9 +4,12 @@ from .models import Demand
 class DemandSerializer(serializers.ModelSerializer):
     class Meta:
         model = Demand
-        fields = ('name',
+        fields = (
+            'id',
+            'name',
             'description',
             'requester',
             'origin',
-            'status'
+            'status',
+            'created_at'
         )
