@@ -6,17 +6,17 @@ from django.utils import timezone
 from rest_framework import status
 from rest_framework.settings import api_settings
 
-from .models import Demand
-from .serializers import DemandSerializer
+from .models import GutMatrix
+from .serializers import GutMatrixSerializer
 from users.permissions import IsDemandManager
-from .filters import DemandFilter
+from .filters import GutMatrixFilter
 
-class DemandViewSet(ModelViewSet):
-    queryset = Demand.objects.all()
-    serializer_class = DemandSerializer
+class GutMatrixViewSet(ModelViewSet):
+    queryset = GutMatrix.objects.all()
+    serializer_class = GutMatrixSerializer
     permission_classes = (IsAuthenticated, IsDemandManager,)
     authentication_classes = (JSONWebTokenAuthentication,)
-    filterset_class = DemandFilter
+    filterset_class = GutMatrixFilter
 
     # Override defalt destroy to method not allowed
     def destroy(self, request, *args, **kwargs):
