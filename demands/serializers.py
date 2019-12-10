@@ -9,6 +9,7 @@ class DemandSerializer(serializers.ModelSerializer):
             'name',
             'description',
             'requester',
+            'requester_email',
             'origin',
             'status',
             'created_at'

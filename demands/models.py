@@ -11,6 +11,7 @@ class Demand(models.Model):
     name = models.CharField(blank=False, null=False, max_length=100, unique=True)
     description = models.TextField(blank=False, null=False, max_length=5000)
     requester = models.CharField(blank=False, null=False, max_length=70)
+    requester_email = models.EmailField(blank=False, null=False)
     origin = models.TextField(blank=False, null=False, max_length=5000)
     status = models.CharField(choices=STATUS, null=False, max_length=20, default='ABERTA')
     created_at = models.DateTimeField(auto_now_add=True)
