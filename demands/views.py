@@ -29,18 +29,8 @@ class DemandViewSet(ModelViewSet):
 
     @action(detail=True, methods=['post'], url_path='switch-status')
     def switch_status(self, request, *args, **kwargs):
-        demand = self.get_object()
-
-        if 'status' not in request.POST:
-            error_message = {
-                "status": [
-                    "Este campo é obrigatório."
-                ]
-            }
-            
-            return Response(status=status.HTTP_400_BAD_REQUEST, data=error_message)
-        
-        demand_status = request.POST['status']
+        demand = self.get_object()        
+        demand_status = request.POST.get['status']
 
         if demand_status != 'ABERTA' and demand_status != 'EM ANDAMENTO' and demand_status != 'FECHADA':
             error_message = {
