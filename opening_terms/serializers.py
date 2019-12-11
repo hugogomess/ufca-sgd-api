@@ -12,5 +12,6 @@ class OpeningTermSerializer(serializers.ModelSerializer):
             'id',
             'project_name',
             'demand',
+            'opening_term',
             'created_at',
         )

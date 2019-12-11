@@ -13,8 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.contrib import admin
 from django.urls import include, path
 from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', include('users.urls')),
@@ -23,4 +26,8 @@ urlpatterns = [
     path('', include('opening_terms.urls')),
     path('auth/login/', obtain_jwt_token),
     path('auth/refresh-token/', refresh_jwt_token),
+    path('admin/', admin.site.urls),
 ]
+
+if settings.DEBUG:
+  urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -5,7 +5,7 @@ class OpeningTerm(models.Model):
 
     project_name = models.CharField(blank=False, null=False, max_length=250)
     demand = models.ForeignKey(Demand, related_name='demand', on_delete=models.DO_NOTHING, blank=False, null=False)
-    # Arquivo do termo de abertura
+    opening_term = models.FileField(null=False, blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
