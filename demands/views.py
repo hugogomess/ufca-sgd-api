@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from django.utils import timezone
 from rest_framework import status
 from rest_framework.settings import api_settings
+from django.db.models import Count
 
 from .models import Demand
 from .serializers import DemandSerializer
@@ -12,7 +13,7 @@ from users.permissions import IsDemandManager
 from .filters import DemandFilter
 
 class DemandViewSet(ModelViewSet):
-    queryset = Demand.objects.all()
+    queryset = Demand.objects.all().annotate(null_gut_matrix=Count('gut_matrix')).order_by('-null_gut_matrix', '-gut_matrix__gut' ,'-created_at')
     serializer_class = DemandSerializer
     permission_classes = (IsAuthenticated, IsDemandManager,)
     authentication_classes = (JSONWebTokenAuthentication,)

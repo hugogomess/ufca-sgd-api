@@ -1,4 +1,5 @@
 from django.db import models
+from gut_matrix.models import GutMatrix
 
 class Demand(models.Model):
     # Dict que define os possíveis status da demanda
@@ -14,8 +15,9 @@ class Demand(models.Model):
     requester_email = models.EmailField(blank=False, null=False)
     origin = models.TextField(blank=False, null=False, max_length=5000)
     status = models.CharField(choices=STATUS, null=False, max_length=20, default='ABERTA')
+    gut_matrix = models.ForeignKey(GutMatrix, related_name='gut_matrix', on_delete=models.DO_NOTHING, blank=True, null=True, default=None)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ['-gut_matrix__gut' ,'-created_at']
