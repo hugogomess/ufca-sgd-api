@@ -47,7 +47,6 @@ class User(AbstractUser):
     # This field determines if user can manager demands
     is_demand_manager = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
     deleted_at = models.DateTimeField(null=True, blank=True)
 
     REQUIRED_FIELDS = ['email', 'first_name', 'password']
