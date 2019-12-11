@@ -17,7 +17,6 @@ class Demand(models.Model):
     status = models.CharField(choices=STATUS, null=False, max_length=20, default='ABERTA')
     gut_matrix = models.ForeignKey(GutMatrix, related_name='gut_matrix', on_delete=models.DO_NOTHING, blank=True, null=True, default=None)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ['-gut_matrix__gut' ,'-created_at']

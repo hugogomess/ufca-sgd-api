@@ -9,7 +9,6 @@ class GutMatrix(models.Model):
     trend = models.IntegerField(blank=False, null=False, validators=[MinValueValidator(1),MaxValueValidator(5)])
     gut = models.IntegerField(blank=False, null=False, validators=[MinValueValidator(1),MaxValueValidator(125)])
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ['-created_at']
