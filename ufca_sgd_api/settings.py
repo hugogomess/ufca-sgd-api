@@ -99,7 +99,7 @@ REST_FRAMEWORK = {
 # JWT settings
 JWT_AUTH = {
     'JWT_ALLOW_REFRESH': True,
-    'JWT_EXPIRATION_DELTA': timedelta(days=2),
+    'JWT_EXPIRATION_DELTA': timedelta(days=5),
 }
 
 WSGI_APPLICATION = 'ufca_sgd_api.wsgi.application'

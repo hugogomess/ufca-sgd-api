@@ -10,6 +10,6 @@ class DemandFilter(django_filters.FilterSet):
    requester = filters.CharFilter(field_name="requester", lookup_expr='contains')
    requester_email = filters.CharFilter(field_name="requester_email", lookup_expr='contains')
    origin = filters.CharFilter(field_name="origin", lookup_expr='contains')
-   status = filters.CharFilter(field_name="origin", lookup_expr='contains')
+   status = filters.CharFilter(field_name="origin", lookup_expr='exact')
 
    
