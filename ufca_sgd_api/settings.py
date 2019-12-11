@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'demands',
     'users',
-    'gut_matrix',
+    'gut_matrices',
+    'opening_terms'
 ]
 
 MIDDLEWARE = [

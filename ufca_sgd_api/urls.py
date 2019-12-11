@@ -19,7 +19,8 @@ from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 urlpatterns = [
     path('', include('users.urls')),
     path('', include('demands.urls')),
-    path('', include('gut_matrix.urls')),
+    path('', include('gut_matrices.urls')),
+    path('', include('opening_terms.urls')),
     path('auth/login/', obtain_jwt_token),
     path('auth/refresh-token/', refresh_jwt_token),
 ]

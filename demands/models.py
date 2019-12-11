@@ -1,5 +1,5 @@
 from django.db import models
-from gut_matrix.models import GutMatrix
+from gut_matrices.models import GutMatrix
 
 class Demand(models.Model):
     # Dict que define os possíveis status da demanda

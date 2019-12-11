@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Demand
-from gut_matrix.models import GutMatrix
+from gut_matrices.models import GutMatrix
 
 class DemandSerializer(serializers.ModelSerializer):
     queryset = GutMatrix.objects.all()
