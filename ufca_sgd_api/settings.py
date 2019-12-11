@@ -114,8 +114,8 @@ DATABASES = {
         'NAME': os.environ.get('DB_NAME', 'ufca-sgd'),
         'USER': os.environ.get('DB_USER', 'postgres'),
         'PASSWORD': os.environ.get('DB_PASS', 'postgres'),
-        'HOST': os.environ.get('HOST', 'localhost'),
-        'PORT': os.environ.get('PORT', 5432),
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PORT': os.environ.get('DB_PORT', 5432),
     }
 }
 
